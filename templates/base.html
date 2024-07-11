@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+    {% block styles %}
+    {% endblock %}
+    <title>The Bike Shed</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#!" class="brand-logo center">The Bike Shed</a>
+                <a href="#" data-target="mobile-menu" class="sidenav-trigger show-on-large"><i class="fas fa-bars"></i></a>
+                <a href="#" data-target="profile-menu" class="profile-trigger show-on-large right"><i class="fas fa-circle-user"></i></a>
+            </div>
+        </nav>
+        <ul class="sidenav" id="mobile-menu">
+            <li><a href="#">My Profile</a></li>
+            <li><a href="{{ url_for('get_my_bike_shed') }}">My Bike Shed</a></li>
+            <li><a href="#">Add Bike</a></li>
+        </ul>
+    </header>
+
+    {% block content %}
+    {% endblock %}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    {% block scripts %}
+    {% endblock %}
+</body>
+</html>

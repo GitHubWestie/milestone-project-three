@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+}
+
+nav .brand-logo {
+    color: #023663;
+    font-family: 'Brush Script MT', cursive;
+}
+
+nav a {
+    color: #023663;
+}
+
+.nav-wrapper {
+    background-color: white;
+}
