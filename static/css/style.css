@@ -14,3 +14,27 @@ nav a {
 .nav-wrapper {
     background-color: white;
 }
+
+.title {
+    color: #023663;
+    font-family: 'Brush Script MT', cursive;
+}
+
+.sign-up-form {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.button {
+    border: 2px solid #023663;
+    border-radius: 50px;
+    font-family: 'Brush Script MT', cursive;
+    color: #023663;
+    background-color: #E1A45C;
+}
+
+.button:hover {
+    background-color: #96D1E4;
+}
