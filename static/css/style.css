@@ -2,6 +2,26 @@
     box-sizing: border-box;
 }
 
+.landing-bg {
+    margin: 0;
+    height: 100vh;
+    background-color: #E4F4FF;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.logo {
+    max-height: 256px;
+    border: 3px solid #023663;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 nav .brand-logo {
     color: #023663;
     font-family: 'Brush Script MT', cursive;
@@ -37,4 +57,10 @@ nav a {
 
 .button:hover {
     background-color: #96D1E4;
+}
+
+.existing-user {
+    font-size: 0.75rem;
+    margin-top: 1rem;
+    text-align: center;
 }

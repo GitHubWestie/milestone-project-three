@@ -11,6 +11,22 @@
     <title>The Bike Shed</title>
 </head>
 <body>
+    <header>
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#!" class="brand-logo center">The Bike Shed</a>
+                <a href="#" data-target="menu" class="sidenav-trigger show-on-large"><i class="fas fa-bars"></i></a>
+                <a href="#" data-target="profile-menu" class="profile-trigger show-on-large right"><i class="fas fa-circle-user"></i></a>
+            </div>
+        </nav>
+        <ul class="sidenav" id="menu">
+            <li><a href="{{ url_for('sign_in') }}">Sign In</a></li>
+            <li><a href="{{ url_for('sign_up') }}">Sign Up</a></li>
+            <li><a href="#">My Profile</a></li>
+            <li><a href="{{ url_for('my_bike_shed') }}">My Bike Shed</a></li>
+            <li><a href="#">Add Bike</a></li>
+        </ul>
+    </header>
 
     {% block content %}
     {% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="row">
+        <form class="col s12 m8 offset-m2 sign-up-form" method="POST" action="{{ url_for('sign_up') }}">
+            <h3 class="title center">Sign Up</h3>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="username" name="username" type="text" class="validate" placeholder="" required>
+                    <label for="username">1. Enter username</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="password" type="password" class="validate" placeholder="" required>
+                    <label for="password">2. Enter passsword</label>
+                </div>
+            </div>
+            <div class="row">
+                <button type="submit" class="col s6 offset-s3 m4 offset-m4 l2 offset-l5 btn-large button">
+                    Sign Up!
+                </button>
+                <span class="col s6 offset-s3 m4 offset-m4 l2 offset-l5 existing-user">
+                    Already have an account? <a href="{{ url_for('sign_in') }}" class="">Sign in</a>!
+                </span>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
