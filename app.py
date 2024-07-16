@@ -43,6 +43,7 @@ def sign_up():
 
         session["user"] = request.form.get("username").lower()
         flash("User created successfully")
+        return redirect(url_for("my_bike_shed"))
 
     return render_template("sign-up.html")
 
