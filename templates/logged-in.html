@@ -20,11 +20,10 @@
             </div>
         </nav>
         <ul class="sidenav" id="menu">
-            <li><a href="{{ url_for('sign_in') }}">Sign In</a></li>
-            <li><a href="{{ url_for('sign_up') }}">Sign Up</a></li>
-            <li><a href="#">My Profile</a></li>
             <li><a href="{{ url_for('my_bike_shed') }}">My Bike Shed</a></li>
+            <li><a href="{{ url_for('my_profile', username=session['user']) }}">My Profile</a></li>
             <li><a href="#">Add Bike</a></li>
+            <li><a href="{{ url_for('sign_out') }}">Sign Out</a></li>
         </ul>
     </header>
 

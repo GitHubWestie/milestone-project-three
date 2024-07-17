@@ -64,3 +64,27 @@ nav a {
     margin-top: 1rem;
     text-align: center;
 }
+
+.db-info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 90vh;
+}
+
+.db-data {
+    text-transform: capitalize;
+    margin: 1rem;
+}
+
+/* .db-collection {
+    background-color: #96D1E4;
+    padding: 1rem;
+    border-radius: 5px;
+/* } */
+
+.db-item {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+}

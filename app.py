@@ -60,20 +60,39 @@ def sign_in():
                 user_exists["password"], request.form.get("password")):
                     session["user"] = request.form.get("username").lower()
                     flash("Welcome {}".format(request.form.get("username")))
+                    return redirect(
+                        url_for("my_profile", username=session["user"]))
             else:
                 flash("Username and/or password incorrect")
-                return redirect(url_for(sign_in))
+                return redirect(url_for("sign_in"))
         else:
             flash("Username and/or password incorrect")
-            return redirect(url_for(sign_in))
+            return redirect(url_for("sign_in"))
         
     return render_template("sign-in.html")
+
+
+@app.route("/my_profile/<username>", methods=["GET", "POST"])
+def my_profile(username):
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+    
+    if session["user"]:
+        return render_template("my-profile.html", username=username)
+    
+    return redirect(url_for("sign_in"))
 
 
 @app.route("/my_bike_shed")
 def my_bike_shed():
     my_bike_shed = mongo.db.my_bike_shed.find()
     return render_template("my-bike-shed.html", my_bike_shed=my_bike_shed)
+
+
+@app.route("/sign_out")
+def sign_out():
+    session.pop("user")
+    return redirect(url_for("sign_in"))
 
 
 if __name__ == "__main__":
