@@ -85,14 +85,39 @@ def my_profile(username):
 
 @app.route("/my_bike_shed")
 def my_bike_shed():
-    my_bike_shed = mongo.db.my_bike_shed.find()
+    my_bike_shed = list(mongo.db.my_bike_shed.find())
     return render_template("my-bike-shed.html", my_bike_shed=my_bike_shed)
+
+
+@app.route("/add_bike", methods=["GET", "POST"])
+def add_bike():
+    categories = mongo.db.categories.find()
+
+    if request.method == "POST":
+        # Gets data from form and converts all values 
+        # to lists so that it can be inserted into a nested dictionary
+        form_data = request.form.to_dict(flat=False)
+        new_bike = {}
+        for key, value in form_data.items():
+            # Keys are split and 'cleaned'
+            keys = key.split('[')
+            keys = [k.replace(']', '') for k in keys]
+            d = new_bike
+            for k in keys[:-1]:
+                # setdefault makes sure dictionary
+                # key exists before setting value
+                d = d.setdefault(k, {})
+            d[keys[-1]] = value[0].lower()
+        mongo.db.my_bike_shed.insert_one(new_bike)
+        return redirect(url_for("my_bike_shed"))
+
+    return render_template("add-bike.html", categories=categories)
 
 
 @app.route("/sign_out")
 def sign_out():
     session.pop("user")
-    return redirect(url_for("sign_in"))
+    return redirect(url_for("landing"))
 
 
 if __name__ == "__main__":

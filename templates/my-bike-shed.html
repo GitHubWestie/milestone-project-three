@@ -1,12 +1,23 @@
 {% extends "logged-in.html" %}
-
 {% block content %}
-    {% for bike in my_bike_shed %}
-        {{bike.manufacturer}} <br>
-        {{bike.model}} <br>
-        {{bike.fork}} <br>
-        {{bike.shock}} <br>
-        {{bike.wheels}} <br>
-        {{bike.brakes}} <br>
-    {% endfor %}
+
+    <div class="db-info-container row">
+        <div class="db-collection col s12 m6 offset-m3 l4 offset-l4">
+            <ul class="collection">
+                {% for bike in my_bike_shed %}
+                <li class="collection-item db-item">
+                    <i class="fa-solid fa-mountain-sun"></i>
+                    <p class="db-data">{{ bike.manufacturer }}</p>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div>
+            <a href="{{ url_for('add_bike') }}" class="col s8 offset-s2 m4 offset-m4 l2 offset-l5 btn-large button">
+                Add Bike
+            </a>
+        </div>
+    </div>
+
 {% endblock %}

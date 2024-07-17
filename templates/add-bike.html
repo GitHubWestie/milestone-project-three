@@ -1,0 +1,40 @@
+{% extends "logged-in.html" %}
+{% block content %}
+
+<div class="row">
+    <form class="col s12" method="POST" action="{{ url_for('add_bike') }}">
+        <div class="row">
+            <div class="input-field col s12">
+                <select id="bike_category" name="bike_category" class="validate" required>
+                    <option value="" disabled selected>Choose category</option>
+                    {% for category in categories %}
+                    <option value="category.bike_category">{{ category.bike_category }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="input-field col s12">
+                <input id="manufacturer" name="manufacturer" type="text" class="validate" required>
+                <label for="manufacturer">Enter manufacturer</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="model" name="model" type="text" class="validate" required>
+                <label for="model">Enter model</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="fork" name="suspension[fork]" type="text" class="validate" required>
+                <label for="fork">Enter fork model</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="shock" name="suspension[shock]" type="text" class="validate" required>
+                <label for="shock">Enter shock model</label>
+            </div>
+        </div>
+        <div class="row">
+            <button type="submit" class="col s6 offset-s3 btn-large button">
+                Add Bike
+            </button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
