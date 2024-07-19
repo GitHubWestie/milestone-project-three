@@ -89,6 +89,12 @@ def my_bike_shed():
     return render_template("my-bike-shed.html", my_bike_shed=my_bike_shed)
 
 
+@app.route("/my_bike/<bike_id>")
+def my_bike(bike_id):
+    bike = mongo.db.my_bike_shed.find_one({'_id': ObjectId(bike_id)})
+    return render_template("my-bike.html", bike=bike)
+
+
 @app.route("/add_bike", methods=["GET", "POST"])
 def add_bike():
     categories = mongo.db.categories.find()

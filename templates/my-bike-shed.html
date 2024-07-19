@@ -5,10 +5,20 @@
         <div class="db-collection col s12 m6 offset-m3 l4 offset-l4">
             <ul class="collection">
                 {% for bike in my_bike_shed %}
-                <li class="collection-item db-item">
-                    <i class="fa-solid fa-mountain-sun"></i>
-                    <p class="db-data">{{ bike.manufacturer }}</p>
-                </li>
+                    <li class="collection-item db-item">
+                        <a href="{{ url_for('my_bike', bike_id=bike._id) }}">
+                            {% if bike.bike_category == 'mountain' %}
+                                <i class="fa-solid fa-mountain-sun circle"></i>
+                            {% elif bike.bike_category == 'road' %}
+                                <i class="fa-solid fa-road"></i>
+                            {% elif bike.bike_category == 'gravel' %}
+                                <i class="fa-solid fa-road-circle-xmark"></i>
+                            {% else %}
+                                <i class="fa-solid fa-question"></i>
+                            {% endif %}
+                            <p class="db-data">{{ bike.manufacturer }}</p>
+                        </a>
+                    </li>
                 {% endfor %}
             </ul>
         </div>
