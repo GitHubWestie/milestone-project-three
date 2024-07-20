@@ -1,8 +1,42 @@
 {% extends "logged-in.html" %}
 {% block content %}
 
-    <h1>{{ bike.manufacturer }} - {{ bike.model }}</h1>
-    <p>{{ bike.bike_category }}</p>
-
+<ul>
+    <!-- iterates over mongo document items -->
+    {% for key, value in bike.items() %}
+        <!-- excludes id -->
+        {% if key != '_id' %}
+            <!-- replaces underscores in document keys with spaces and capitalizes all words -->
+            {% set formatted_key = key.replace('_', ' ').title() %}
+            <!-- checks if value is a nested dictionary -->
+            {% if value is mapping %}
+                <li>
+                    <!-- uses formatted_key declared above to apply the jinja filters -->
+                    {{ formatted_key }}:
+                    <ul>
+                        <!-- iterates over nested dictionary items -->
+                        {% for sub_key, sub_value in value.items() %}
+                            <!-- replaces underscores in nested keys with spaces and capitalizes all words -->
+                            {% set formatted_sub_key = key.replace('_', ' ').title() %}
+                            {% set formatted_sub_value = sub_value.replace('_', ' ').title() %}
+                        <li>
+                            <!-- uses formatted_sub_key and value declared above to apply the jinja filters -->
+                            {{ formatted_sub_key }} : {{ formatted_sub_value }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% else %}
+            <!-- replaces underscores in document values with spaces and capitalizes all words -->
+            {% set formatted_value = value.replace('_', ' ').title() %}
+                <li>
+                    <!-- uses formatted_key and formatted_value declared above to apply the jinja filters -->
+                    {{ formatted_key }} : {{ formatted_value }}
+                </li>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+</ul>
 
 {% endblock %}
+
