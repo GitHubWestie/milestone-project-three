@@ -120,6 +120,16 @@ def add_bike():
     return render_template("add-bike.html", categories=categories)
 
 
+@app.route("/edit_bike/<bike_id>")
+
+
+@app.route("/delete_bike/<bike_id>")
+def delete_bike(bike_id):
+    mongo.db.my_bike_shed.delete_one({'_id': ObjectId(bike_id)})
+    flash("Bike successfully deleted")
+    return redirect(url_for("my_bike_shed"))
+
+
 @app.route("/sign_out")
 def sign_out():
     session.pop("user")
