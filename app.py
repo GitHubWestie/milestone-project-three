@@ -120,7 +120,10 @@ def add_bike():
     return render_template("add-bike.html", categories=categories)
 
 
-@app.route("/edit_bike/<bike_id>")
+@app.route("/edit_bike/<bike_id>", methods=["GET", "POST"])
+def edit_bike(bike_id):
+    bike = mongo.db.my_bike_shed.find_one({'_id': ObjectId(bike_id)})
+    return render_template("edit-bike.html", bike=bike)
 
 
 @app.route("/delete_bike/<bike_id>")

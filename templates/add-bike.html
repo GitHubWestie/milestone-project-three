@@ -5,7 +5,7 @@
     <form class="col s12" method="POST" action="{{ url_for('add_bike') }}">
         <div class="row">
             <div class="input-field col s12">
-                <select id="bike_category" name="bike_category" class="validate" required>
+                <select id="bike_category" name="bike_category" class="validate">
                     <option value="" disabled selected>Choose category</option>
                     {% for category in categories %}
                     <option value="{{ category.bike_category }}">{{ category.bike_category }}</option>
@@ -21,27 +21,27 @@
                 <label for="model">Model</label>
             </div>
             <div class="input-field col s12">
-                <input id="fork" name="suspension[fork]" type="text" class="validate" required>
+                <input id="fork" name="suspension[fork]" type="text" class="validate">
                 <label for="fork">Fork</label>
             </div>
             <div class="input-field col s12">
-                <input id="shock" name="suspension[shock]" type="text" class="validate" required>
+                <input id="shock" name="suspension[shock]" type="text" class="validate">
                 <label for="shock">Shock</label>
             </div>
             <div class="input-field col s12">
-                <input id="front_brake" name="brakes[front_brake]" type="text" class="validate" required>
+                <input id="front_brake" name="brakes[front_brake]" type="text" class="validate">
                 <label for="front_brake">Front brake</label>
             </div>
             <div class="input-field col s12">
-                <input id="rear_brake" name="brakes[rear_brake]" type="text" class="validate" required>
+                <input id="rear_brake" name="brakes[rear_brake]" type="text" class="validate">
                 <label for="rear_brake">Rear brake</label>
             </div>
             <div class="input-field col s12">
-                <input id="front_brake_rotor" name="brakes[front_brake_rotor]" type="text" class="validate" required>
+                <input id="front_brake_rotor" name="brakes[front_brake_rotor]" type="text" class="validate">
                 <label for="front_brake_rotor">Front brake rotor</label>
             </div>
             <div class="input-field col s12">
-                <input id="rear_brake_rotor" name="brakes[rear_brake_rotor]" type="text" class="validate" required>
+                <input id="rear_brake_rotor" name="brakes[rear_brake_rotor]" type="text" class="validate">
                 <label for="rear_brake_rotor">Rear brake rotor</label>
             </div>
         </div>
