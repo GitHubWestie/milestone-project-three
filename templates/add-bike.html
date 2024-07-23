@@ -8,7 +8,7 @@
                 <select id="bike_category" name="bike_category" class="validate">
                     <option value="" disabled selected>Choose category</option>
                     {% for category in categories %}
-                    <option value="{{ category.bike_category }}">{{ category.bike_category }}</option>
+                    <option value="{{ category.bike_category }}">{{ category.bike_category.title() }}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -21,12 +21,32 @@
                 <label for="model">Model</label>
             </div>
             <div class="input-field col s12">
+                <input id="size" name="size" type="text" class="validate" required>
+                <label for="size">Size</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="colour" name="colour" type="text" class="validate" required>
+                <label for="colour">Colour</label>
+            </div>
+            <div class="input-field col s12">
                 <input id="fork" name="suspension[fork]" type="text" class="validate">
                 <label for="fork">Fork</label>
             </div>
             <div class="input-field col s12">
                 <input id="shock" name="suspension[shock]" type="text" class="validate">
                 <label for="shock">Shock</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="rims" name="wheels[rims]" type="text" class="validate">
+                <label for="rims">Rims</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="spokes" name="wheels[spokes]" type="text" class="validate">
+                <label for="spokes">Spokes</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="hubs" name="wheels[hubs]" type="text" class="validate">
+                <label for="hubs">Hubs</label>
             </div>
             <div class="input-field col s12">
                 <input id="front_brake" name="brakes[front_brake]" type="text" class="validate">
@@ -43,6 +63,26 @@
             <div class="input-field col s12">
                 <input id="rear_brake_rotor" name="brakes[rear_brake_rotor]" type="text" class="validate">
                 <label for="rear_brake_rotor">Rear brake rotor</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="crankset" name="transmission[crankset]" type="text" class="validate">
+                <label for="crankset">Crankset</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="chain" name="transmission[chain]" type="text" class="validate">
+                <label for="chain">Chain</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="chainring" name="transmission[chainring]" type="text" class="validate">
+                <label for="chainring">Chainring</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="derailleur" name="transmission[derailleur]" type="text" class="validate">
+                <label for="derailleur">Derailleur</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="cassette" name="transmission[cassette]" type="text" class="validate">
+                <label for="cassette">Cassette</label>
             </div>
         </div>
         <div class="row">

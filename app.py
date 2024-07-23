@@ -122,6 +122,30 @@ def add_bike():
 
 @app.route("/edit_bike/<bike_id>", methods=["GET", "POST"])
 def edit_bike(bike_id):
+    if request.method == "POST":
+        updated_bike = request.form.to_dict()
+
+        # Rebuilds nested dictionaries to be inserted back into db
+        for key, value in updated_bike.items():
+            # finds nested dict and splits keys
+            if '.' in key:
+                keys = key.split('.')
+                nested_dict = {keys[-1]: value}
+                for k in reversed(keys[:-1]):
+                    nested_dict = {k: nested_dict}
+                mongo.db.my_bike_shed.update_one(
+                    {'_id': ObjectId(bike_id)},
+                    {'$set': nested_dict}
+                )
+            else:
+                mongo.db.my_bike_shed.update_one(
+                    {'_id': ObjectId(bike_id)},
+                    {'$set': {key:value}}
+                )
+        
+        return redirect(url_for("my_bike_shed"))
+                
+    
     bike = mongo.db.my_bike_shed.find_one({'_id': ObjectId(bike_id)})
     categories = mongo.db.categories.find()
     return render_template("edit-bike.html", bike=bike, categories=categories)
