@@ -1,7 +1,40 @@
 {% extends "logged-in.html" %}
 {% block content %}
 
-    <h6>{{ bike.manufacturer }}</h6>
-    <h6>{{ bike.model }}</h6>
+    <div class="row">
+        <form class="col s-12" method="POST">
+            <div class="input-field col s12">
+                <select id="bike_category" name="bike_category" class="validate">
+                    <option value="{{ bike.category }}" disabled selected>Choose category</option>
+                    {% for category in categories %}
+                    <option value="{{ category.bike_category }}">{{ category.bike_category }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            {% set ignored_fields = ['_id', 'bike_category'] %}
+            {% for key, value in bike.items() %}
+                {% if key not in ignored_fields %}
+                    {% set formatted_key = key.replace('_', ' ').title() %}
+                    {% if value is mapping %}
+                        {% for subkey, subvalue in value.items() %}
+                        {% set formatted_sub_key = key.replace('_', ' ').title() %}
+                            <div class="input-field col s12">
+                                <label for="{{ key }}.{{ subkey }}">{{ formatted_sub_key }}</label>
+                                <input id="{{ key }}.{{ subkey }}" name="{{ key }}.{{ subkey }}" type="text"  value="{{ subvalue.title() }}">
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <label for="{{ key }}">{{ formatted_key }}</label>
+                        <input id="{{ key }}" name="{{ key }}" type="text" value="{{ value.title() }}">
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+            <div class="row">
+                <button type="submit" class="col s6 offset-s3 btn-large button">
+                    Update
+                </button>
+            </div>
+        </form>
+    </div>
 
 {% endblock %}
