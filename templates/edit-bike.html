@@ -16,12 +16,12 @@
                     {% if value is mapping %}
                         {% for subkey, subvalue in value.items() %}
                             <div class="input-field col s12">
-                                <label for="{{ key }}.{{ subkey }}" id="label">{{ subkey.replace('_', ' ').title() }}</label>
+                                <label for="{{ key }}.{{ subkey }}" class="my-label">{{ subkey.replace('_', ' ').title() }}</label>
                                 <input id="{{ key }}.{{ subkey }}" name="{{ key }}.{{ subkey }}" type="text"  value="{{ subvalue.title() }}">
                             </div>
                         {% endfor %}
                     {% else %}
-                        <label for="{{ key }}" id="label">{{ key.title() }}</label>
+                        <label for="{{ key }}" class="my-label">{{ key.title() }}</label>
                         <input id="{{ key }}" name="{{ key }}" type="text" value="{{ value.title() }}">
                     {% endif %}
                 {% endif %}

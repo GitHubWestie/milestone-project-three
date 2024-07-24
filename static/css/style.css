@@ -116,7 +116,7 @@ a {
     display: contents;
 }
 
-#label {
+.input-field>label.my-label {
     color: #023663;
 }
 
