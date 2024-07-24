@@ -34,7 +34,7 @@ def sign_up():
         if user_exists:
             flash("User already exists")
             return redirect(url_for("sign_up"))
-        
+
         new_user = {
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password"))
@@ -68,7 +68,7 @@ def sign_in():
         else:
             flash("Username and/or password incorrect")
             return redirect(url_for("sign_in"))
-        
+
     return render_template("sign-in.html")
 
 
@@ -77,12 +77,12 @@ def my_profile(username):
     # Check if 'user' is in session
     if 'user' in session:
         # Retrieve the username from the session
-        username = mongo.db.users.find_one({"username": session["user"]})["username"]
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
         return render_template("my-profile.html", username=username)
     else:
         # Redirect to sign-in page if 'user' is not in session
         return redirect(url_for("sign_in"))
-
 
 
 @app.route("/my_bike_shed")
@@ -102,7 +102,7 @@ def add_bike():
     categories = mongo.db.categories.find()
 
     if request.method == "POST":
-        # Gets data from form and converts all values 
+        # Gets data from form and converts all values
         # to lists so that it can be inserted into a nested dictionary
         form_data = request.form.to_dict(flat=False)
         new_bike = {}
