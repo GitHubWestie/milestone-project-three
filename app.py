@@ -61,7 +61,7 @@ def sign_in():
                     session["user"] = request.form.get("username").lower()
                     flash("Welcome {}".format(request.form.get("username")))
                     return redirect(
-                        url_for("my_profile", username=session["user"]))
+                        url_for("my_bike_shed", username=session["user"]))
             else:
                 flash("Username and/or password incorrect")
                 return redirect(url_for("sign_in"))
@@ -124,28 +124,32 @@ def add_bike():
 def edit_bike(bike_id):
     if request.method == "POST":
         updated_bike = request.form.to_dict()
+        updated_bike_data = {}
 
         # Rebuilds nested dictionaries to be inserted back into db
         for key, value in updated_bike.items():
-            # finds nested dict and splits keys
             if '.' in key:
                 keys = key.split('.')
                 nested_dict = {keys[-1]: value}
                 for k in reversed(keys[:-1]):
                     nested_dict = {k: nested_dict}
-                mongo.db.my_bike_shed.update_one(
-                    {'_id': ObjectId(bike_id)},
-                    {'$set': nested_dict}
-                )
+                # Merge nested_dict into updated_bike_data
+                for k, v in nested_dict.items():
+                    if k in updated_bike_data:
+                        updated_bike_data[k].update(v)
+                    else:
+                        updated_bike_data[k] = v
             else:
-                mongo.db.my_bike_shed.update_one(
-                    {'_id': ObjectId(bike_id)},
-                    {'$set': {key:value}}
-                )
-        
+                updated_bike_data[key] = value
+
+        # Perform the update with the entire updated_bike_data dictionary
+        mongo.db.my_bike_shed.update_one(
+            {'_id': ObjectId(bike_id)},
+            {'$set': updated_bike_data}
+        )
+
         return redirect(url_for("my_bike_shed"))
-                
-    
+
     bike = mongo.db.my_bike_shed.find_one({'_id': ObjectId(bike_id)})
     categories = mongo.db.categories.find()
     return render_template("edit-bike.html", bike=bike, categories=categories)

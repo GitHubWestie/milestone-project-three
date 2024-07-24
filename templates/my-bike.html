@@ -1,49 +1,49 @@
 {% extends "logged-in.html" %}
 {% block content %}
 
-<ul>
-    <!-- iterates over mongo document items -->
-    {% for key, value in bike.items() %}
-        <!-- excludes id -->
-        {% if key != '_id' %}
-            <!-- replaces underscores in document keys with spaces and capitalizes all words -->
-            {% set formatted_key = key.replace('_', ' ').title() %}
-            <!-- checks if value is a nested dictionary -->
-            {% if value is mapping %}
-                <li>
-                    <!-- uses formatted_key declared above to apply the jinja filters -->
-                    {{ formatted_key }}:
-                    <ul>
-                        <!-- iterates over nested dictionary items -->
+    <div class="db-info-container row">
+        <div class="db-collection col s12 m6 offset-m3 l4 offset-l4">
+            <h3>{{ bike.manufacturer.title() }} {{ bike.model.title() }}</h3>
+            <ul class="collection">
+                <!-- iterates over mongo document items -->
+                {% for key, value in bike.items() %}
+                    {% if value is mapping %}
                         {% for sub_key, sub_value in value.items() %}
-                            <!-- replaces underscores in nested keys with spaces and capitalizes all words -->
-                            {% set formatted_sub_key = key.replace('_', ' ').title() %}
-                            {% set formatted_sub_value = sub_value.replace('_', ' ').title() %}
-                        <li>
-                            <!-- uses formatted_sub_key and value declared above to apply the jinja filters -->
-                            {{ formatted_sub_key }} : {{ formatted_sub_value }}
-                        </li>
+                            {% if sub_value %}
+                                <li class="collection-item db-item">
+                                    {{ sub_key.replace('_', ' ').title() }}: {{ sub_value.replace('_', ' ').title() }}
+                                </li>
+                            {% endif %}
                         {% endfor %}
-                    </ul>
-                </li>
-            {% else %}
-            <!-- replaces underscores in document values with spaces and capitalizes all words -->
-            {% set formatted_value = value.replace('_', ' ').title() %}
-                <li>
-                    <!-- uses formatted_key and formatted_value declared above to apply the jinja filters -->
-                    {{ formatted_key }} : {{ formatted_value }}
-                </li>
-            {% endif %}
-        {% endif %}
-    {% endfor %}
-</ul>
+                    {% else %}
+                        {% if key != '_id' and value %}
+                            <li class="collection-item db-item">
+                                {{ key.replace('_', ' ').title() }}: {{ value.replace('_', ' ').title() }}
+                            </li>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <a href="{{ url_for('edit_bike', bike_id=bike._id) }}" class="col s6 btn-large button">Edit Bike</a>
+            <a class="modal-trigger col s6 btn-large button" href="#modal1">Delete Bike</a>
+        </div>
+    </div>
 
-<button type="submit" class="col s6 offset-s3 m4 offset-m4 l2 offset-l5 btn-large button">
-    <a href="{{ url_for('edit_bike', bike_id=bike._id) }}">Edit Bike</a>
-</button>
-<button type="submit" class="col s6 offset-s3 m4 offset-m4 l2 offset-l5 btn-large button">
-    <a href="{{ url_for('delete_bike', bike_id=bike._id) }}">Delete Bike</a>
-</button>
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>Are you sure?</h4>
+            <p>This will permanently remove this bike and cannot be undone!</p>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="col s6 offset-s3 m4 offset-m4 l2 offset-l5 btn-large button">
+                <a href="{{ url_for('my_bike_shed') }}">Cancel</a>
+            </button>
+            <button type="submit" class="col s6 offset-s3 m4 offset-m4 l2 offset-l5 btn-large button">
+                <a href="{{ url_for('delete_bike', bike_id=bike._id) }}">Delete Bike</a>
+            </button>
+        </div>
+    </div>
 
 {% endblock %}
 

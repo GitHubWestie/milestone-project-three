@@ -77,12 +77,6 @@ nav a {
     margin: 1rem;
 }
 
-/* .db-collection {
-    background-color: #96D1E4;
-    padding: 1rem;
-    border-radius: 5px;
-/* } */
-
 .db-item {
     display: flex;
     align-items: center;
@@ -115,4 +109,18 @@ nav a {
     justify-content: flex-start;
     flex-direction: row;
     color: #023663;
+}
+
+a {
+    color: #023663;
+    display: contents;
+}
+
+#label {
+    color: #023663;
+}
+
+.hidden-menu {
+    color: #023663;
+    cursor: pointer;
 }

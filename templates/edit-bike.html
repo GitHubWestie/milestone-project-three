@@ -5,26 +5,23 @@
         <form class="col s-12" method="POST" action="{{  url_for('edit_bike', bike_id=bike._id)  }}">
             <div class="input-field col s12">
                 <select id="bike_category" name="bike_category" class="validate">
-                    <option value="{{ bike.category }}" disabled selected>Choose category</option>
                     {% for category in categories %}
-                    <option value="{{ category.bike_category }}">{{ category.bike_category }}</option>
+                    <option value="{{ category.bike_category }}">{{ category.bike_category.title() }}</option>
                     {% endfor %}
                 </select>
             </div>
             {% set ignored_fields = ['_id', 'bike_category'] %}
             {% for key, value in bike.items() %}
                 {% if key not in ignored_fields %}
-                    {% set formatted_key = key.replace('_', ' ').title() %}
                     {% if value is mapping %}
                         {% for subkey, subvalue in value.items() %}
-                        {% set formatted_sub_key = key.replace('_', ' ').title() %}
                             <div class="input-field col s12">
-                                <label for="{{ key }}.{{ subkey }}">{{ formatted_sub_key }}</label>
+                                <label for="{{ key }}.{{ subkey }}" id="label">{{ subkey.replace('_', ' ').title() }}</label>
                                 <input id="{{ key }}.{{ subkey }}" name="{{ key }}.{{ subkey }}" type="text"  value="{{ subvalue.title() }}">
                             </div>
                         {% endfor %}
                     {% else %}
-                        <label for="{{ key }}">{{ formatted_key }}</label>
+                        <label for="{{ key }}" id="label">{{ key.title() }}</label>
                         <input id="{{ key }}" name="{{ key }}" type="text" value="{{ value.title() }}">
                     {% endif %}
                 {% endif %}

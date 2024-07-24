@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/thebikeshed.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename='images/thebikeshed.ico') }}" type="image/x-icon">
     {% block styles %}
     {% endblock %}
     <title>The Bike Shed</title>
@@ -14,9 +16,8 @@
     <header>
         <nav>
             <div class="nav-wrapper">
-                <a href="#!" class="brand-logo center">The Bike Shed</a>
-                <a href="#" data-target="menu" class="sidenav-trigger show-on-large"><i class="fas fa-bars"></i></a>
-                <a href="#" data-target="profile-menu" class="profile-trigger show-on-large right"><i class="fas fa-circle-user"></i></a>
+                <a href="{{ url_for('my_bike_shed') }}" class="brand-logo center">The Bike Shed</a>
+                <span data-target="menu" class="sidenav-trigger show-on-large hidden-menu"><i class="fas fa-bars"></i></span>
             </div>
         </nav>
         <ul class="sidenav" id="menu">

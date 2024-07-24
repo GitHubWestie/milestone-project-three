@@ -5,7 +5,7 @@
     <form class="col s12" method="POST" action="{{ url_for('add_bike') }}">
         <div class="row">
             <div class="input-field col s12">
-                <select id="bike_category" name="bike_category" class="validate">
+                <select id="bike_category" name="bike_category" class="validate" required>
                     <option value="" disabled selected>Choose category</option>
                     {% for category in categories %}
                     <option value="{{ category.bike_category }}">{{ category.bike_category.title() }}</option>
@@ -13,76 +13,84 @@
                 </select>
             </div>
             <div class="input-field col s12">
-                <input id="manufacturer" name="manufacturer" type="text" class="validate" required>
-                <label for="manufacturer">Manufacturer</label>
+                <input id="manufacturer" name="manufacturer" type="text" class="validate" placeholder="required" required>
+                <label for="manufacturer" id="label">Manufacturer</label>
             </div>
             <div class="input-field col s12">
-                <input id="model" name="model" type="text" class="validate" required>
-                <label for="model">Model</label>
+                <input id="model" name="model" type="text" class="validate" placeholder="required" required>
+                <label for="model" id="label">Model</label>
             </div>
             <div class="input-field col s12">
-                <input id="size" name="size" type="text" class="validate" required>
-                <label for="size">Size</label>
+                <input id="size" name="size" type="text" class="validate">
+                <label for="size" id="label">Size</label>
             </div>
             <div class="input-field col s12">
-                <input id="colour" name="colour" type="text" class="validate" required>
-                <label for="colour">Colour</label>
+                <input id="colour" name="colour" type="text" class="validate">
+                <label for="colour" id="label">Colour</label>
             </div>
             <div class="input-field col s12">
                 <input id="fork" name="suspension[fork]" type="text" class="validate">
-                <label for="fork">Fork</label>
+                <label for="fork" id="label">Fork</label>
             </div>
             <div class="input-field col s12">
                 <input id="shock" name="suspension[shock]" type="text" class="validate">
-                <label for="shock">Shock</label>
+                <label for="shock" id="label">Shock</label>
             </div>
             <div class="input-field col s12">
                 <input id="rims" name="wheels[rims]" type="text" class="validate">
-                <label for="rims">Rims</label>
+                <label for="rims" id="label">Rims</label>
             </div>
             <div class="input-field col s12">
                 <input id="spokes" name="wheels[spokes]" type="text" class="validate">
-                <label for="spokes">Spokes</label>
+                <label for="spokes" id="label">Spokes</label>
             </div>
             <div class="input-field col s12">
                 <input id="hubs" name="wheels[hubs]" type="text" class="validate">
-                <label for="hubs">Hubs</label>
+                <label for="hubs" id="label">Hubs</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="front_tyre" name="wheels[front_tyre]" type="text" class="validate">
+                <label for="front_tyre" id="label">Front Tyre</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="rear_tyre" name="wheels[rear_tyre]" type="text" class="validate">
+                <label for="rear_tyre" id="label">Rear Tyre</label>
             </div>
             <div class="input-field col s12">
                 <input id="front_brake" name="brakes[front_brake]" type="text" class="validate">
-                <label for="front_brake">Front brake</label>
+                <label for="front_brake" id="label">Front brake</label>
             </div>
             <div class="input-field col s12">
                 <input id="rear_brake" name="brakes[rear_brake]" type="text" class="validate">
-                <label for="rear_brake">Rear brake</label>
+                <label for="rear_brake" id="label">Rear brake</label>
             </div>
             <div class="input-field col s12">
                 <input id="front_brake_rotor" name="brakes[front_brake_rotor]" type="text" class="validate">
-                <label for="front_brake_rotor">Front brake rotor</label>
+                <label for="front_brake_rotor" id="label">Front brake rotor</label>
             </div>
             <div class="input-field col s12">
                 <input id="rear_brake_rotor" name="brakes[rear_brake_rotor]" type="text" class="validate">
-                <label for="rear_brake_rotor">Rear brake rotor</label>
+                <label for="rear_brake_rotor" id="label">Rear brake rotor</label>
             </div>
             <div class="input-field col s12">
                 <input id="crankset" name="transmission[crankset]" type="text" class="validate">
-                <label for="crankset">Crankset</label>
+                <label for="crankset" id="label">Crankset</label>
             </div>
             <div class="input-field col s12">
                 <input id="chain" name="transmission[chain]" type="text" class="validate">
-                <label for="chain">Chain</label>
+                <label for="chain" id="label">Chain</label>
             </div>
             <div class="input-field col s12">
                 <input id="chainring" name="transmission[chainring]" type="text" class="validate">
-                <label for="chainring">Chainring</label>
+                <label for="chainring" id="label">Chainring</label>
             </div>
             <div class="input-field col s12">
                 <input id="derailleur" name="transmission[derailleur]" type="text" class="validate">
-                <label for="derailleur">Derailleur</label>
+                <label for="derailleur" id="label">Derailleur</label>
             </div>
             <div class="input-field col s12">
                 <input id="cassette" name="transmission[cassette]" type="text" class="validate">
-                <label for="cassette">Cassette</label>
+                <label for="cassette" id="label">Cassette</label>
             </div>
         </div>
         <div class="row">
