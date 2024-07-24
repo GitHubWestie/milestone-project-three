@@ -74,13 +74,15 @@ def sign_in():
 
 @app.route("/my_profile/<username>", methods=["GET", "POST"])
 def my_profile(username):
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
-    
-    if session["user"]:
+    # Check if 'user' is in session
+    if 'user' in session:
+        # Retrieve the username from the session
+        username = mongo.db.users.find_one({"username": session["user"]})["username"]
         return render_template("my-profile.html", username=username)
-    
-    return redirect(url_for("sign_in"))
+    else:
+        # Redirect to sign-in page if 'user' is not in session
+        return redirect(url_for("sign_in"))
+
 
 
 @app.route("/my_bike_shed")
