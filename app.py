@@ -100,7 +100,7 @@ def my_profile(username):
 
 @app.route("/my_bike_shed")
 def my_bike_shed():
-    my_bike_shed = list(mongo.db.my_bike_shed.find())
+    my_bike_shed = list(mongo.db.my_bike_shed.find({"user_id": session['user']}))
     return render_template("my-bike-shed.html", my_bike_shed=my_bike_shed)
 
 

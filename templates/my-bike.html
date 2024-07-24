@@ -6,20 +6,23 @@
             <h3>{{ bike.manufacturer.title() }} {{ bike.model.title() }}</h3>
             <ul class="collection">
                 <!-- iterates over mongo document items -->
+                {% set ignored_fields = ['user_id'] %}
                 {% for key, value in bike.items() %}
-                    {% if value is mapping %}
-                        {% for sub_key, sub_value in value.items() %}
-                            {% if sub_value %}
+                    {% if key not in ignored_fields %}
+                        {% if value is mapping %}
+                            {% for sub_key, sub_value in value.items() %}
+                                {% if sub_value %}
+                                    <li class="collection-item db-item">
+                                        {{ sub_key.replace('_', ' ').title() }}: {{ sub_value.replace('_', ' ').title() }}
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        {% else %}
+                            {% if key != '_id' and value %}
                                 <li class="collection-item db-item">
-                                    {{ sub_key.replace('_', ' ').title() }}: {{ sub_value.replace('_', ' ').title() }}
+                                    {{ key.replace('_', ' ').title() }}: {{ value.replace('_', ' ').title() }}
                                 </li>
                             {% endif %}
-                        {% endfor %}
-                    {% else %}
-                        {% if key != '_id' and value %}
-                            <li class="collection-item db-item">
-                                {{ key.replace('_', ' ').title() }}: {{ value.replace('_', ' ').title() }}
-                            </li>
                         {% endif %}
                     {% endif %}
                 {% endfor %}

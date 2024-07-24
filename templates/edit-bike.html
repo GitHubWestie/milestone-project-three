@@ -10,7 +10,7 @@
                     {% endfor %}
                 </select>
             </div>
-            {% set ignored_fields = ['_id', 'bike_category'] %}
+            {% set ignored_fields = ['_id', 'bike_category', 'user_id'] %}
             {% for key, value in bike.items() %}
                 {% if key not in ignored_fields %}
                     {% if value is mapping %}

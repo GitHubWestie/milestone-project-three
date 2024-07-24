@@ -5,6 +5,10 @@
     <form class="col s12" method="POST" action="{{ url_for('add_bike') }}">
         <div class="row">
             <div class="input-field col s12">
+                <input id="user_id" name="user_id" type="text" class="hidden" value="{{ session['user'] }}">
+                <label for="manufacturer" class="my-label"></label>
+            </div>
+            <div class="input-field col s12">
                 <select id="bike_category" name="bike_category" class="validate" required>
                     <option value="" disabled selected>Choose category</option>
                     {% for category in categories %}

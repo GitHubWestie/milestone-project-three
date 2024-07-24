@@ -124,3 +124,7 @@ a {
     color: #023663;
     cursor: pointer;
 }
+
+.hidden {
+    display: none;
+}
