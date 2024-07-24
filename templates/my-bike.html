@@ -36,12 +36,8 @@
             <p>This will permanently remove this bike and cannot be undone!</p>
         </div>
         <div class="modal-footer">
-            <button type="submit" class="col s6 offset-s3 m4 offset-m4 l2 offset-l5 btn-large button">
-                <a href="{{ url_for('my_bike_shed') }}">Cancel</a>
-            </button>
-            <button type="submit" class="col s6 offset-s3 m4 offset-m4 l2 offset-l5 btn-large button">
-                <a href="{{ url_for('delete_bike', bike_id=bike._id) }}">Delete Bike</a>
-            </button>
+            <a href="{{ url_for('my_bike_shed') }}" class="col s6 offset-s3 m4 offset-m4 l2 offset-l5 btn-large button">Cancel</a>
+            <a href="{{ url_for('delete_bike', bike_id=bike._id) }}" class="col s6 offset-s3 m4 offset-m4 l2 offset-l5 btn-large button">Delete Bike</a>
         </div>
     </div>
 
