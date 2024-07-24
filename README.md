@@ -1,11 +1,11 @@
 # The Bike Shed
 
-![mock-up img]()
+![mock-up img](other-media\am-i-responsive.png)
 
 ## Strategy
 The bike shed app is for cyclists who wish to keep a convenient collection of information about their bike/s and setup variables. 
 
-The intended user will be a cyclist who enjoys analysing data and fettling with their setup to extract the most performance out of their bike/s in a variety of different environments. The app will also aim to connect riders via a ratings and selling platform.
+The intended user will be a cyclist who enjoys analysing data and fettling with their setup to extract the most performance out of their bike/s in a variety of different environments. The app will eventually also aim to connect riders via a ratings and selling platform.
 
 ## Scope
 
@@ -47,7 +47,7 @@ The intended user will be a cyclist who enjoys analysing data and fettling with 
     Last serviced/service due date
 
 ### My Profile
-    Stores data about the user such as user name, name, email etc.
+    Stores data about the user such as username, name, email etc.
 
 ### Future Feature Implementations
     Upload invoice of most recent service evidence

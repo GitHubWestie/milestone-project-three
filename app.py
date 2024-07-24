@@ -18,6 +18,20 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+@app.before_request
+def check_logged_in():
+    # List of routes that don't require login
+    whitelist = ['landing', 'sign_up', 'sign_in']
+
+    # Exclude static file requests
+    if request.path.startswith('/static/'):
+        return
+
+    # Check if the user is logged in and redirect if not
+    if request.endpoint not in whitelist and 'user' not in session:
+        return redirect(url_for('landing'))
+
+
 @app.route("/")
 @app.route("/landing")
 def landing():
@@ -59,7 +73,6 @@ def sign_in():
             if check_password_hash(
                 user_exists["password"], request.form.get("password")):
                     session["user"] = request.form.get("username").lower()
-                    flash("Welcome {}".format(request.form.get("username")))
                     return redirect(
                         url_for("my_bike_shed", username=session["user"]))
             else:

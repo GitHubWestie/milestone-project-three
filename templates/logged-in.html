@@ -16,7 +16,7 @@
     <header>
         <nav>
             <div class="nav-wrapper">
-                <a href="{{ url_for('my_bike_shed') }}" class="brand-logo center">The Bike Shed</a>
+                <a href="{{ url_for('my_bike_shed') }}" class="brand-logo center">{{ session['user'].title() }}'s Bike Shed</a>
                 <span data-target="menu" class="sidenav-trigger show-on-large hidden-menu"><i class="fas fa-bars"></i></span>
             </div>
         </nav>
