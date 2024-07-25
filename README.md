@@ -1,6 +1,6 @@
 # The Bike Shed
 
-![mock-up img](other-media\am-i-responsive.png)
+![mock-up img](\other-media\am-i-responsive.png)
 
 ## Strategy
 The Bike Shed app is for cyclists who wish to keep a convenient collection of information about their bike/s and setup variables. The app allows users to create an account to login and store data securely before creating their bike or collection of bikes. Bikes can then be recalled for viewing, editing or deletion.
