@@ -13,6 +13,8 @@ The intended user will be a cyclist who:
 
 The app will eventually also aim to connect riders via a ratings and selling platform.
 
+The app is active and can be used [here](https://the-bike-shed-3d6351787c10.herokuapp.com/)
+
 ## Scope
 
 ### As a first time user I want:
@@ -39,7 +41,7 @@ The app will eventually also aim to connect riders via a ratings and selling pla
 
 ![landing](/other-media/screenshots/landing.png) ![signup](/other-media/screenshots/signup.png) ![signin](/other-media/screenshots/sign-in.png)
 
-Users will need to sign up and login to view their account and bike shed.
+Users will need to sign up and login to view their account and bike shed. User credential creation is controlled using form validation and passwords are hashed before being stored using Werkzeug.
 
 After being successfully signed up users will be directed to the 'My Bike Shed' page to add their first bike.
 

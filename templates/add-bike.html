@@ -8,7 +8,7 @@
                 <input id="user_id" name="user_id" type="text" class="hidden" value="{{ session['user'] }}">
                 <label for="manufacturer" class="my-label"></label>
             </div>
-            <div class="input-field col s12">
+            <div class="input-field col s12 m6 offset-m3 l4 offset-l4">
                 <select id="bike_category" name="bike_category" class="validate" required>
                     <option value="" disabled selected>Choose category</option>
                     {% for category in categories %}
@@ -16,93 +16,93 @@
                     {% endfor %}
                 </select>
             </div>
-            <div class="input-field col s12">
+            <div class="input-field col s12 m6 offset-m3 l4 offset-l4">
                 <input id="manufacturer" name="manufacturer" type="text" class="validate" placeholder="required" required>
                 <label for="manufacturer" class="my-label">Manufacturer</label>
             </div>
-            <div class="input-field col s12">
+            <div class="input-field col s12 m6 offset-m3 l4 offset-l4">
                 <input id="model" name="model" type="text" class="validate" placeholder="required" required>
                 <label for="model" class="my-label">Model</label>
             </div>
-            <div class="input-field col s12">
+            <div class="input-field col s12 m6 offset-m3 l4 offset-l4">
                 <input id="size" name="size" type="text" class="validate">
                 <label for="size" class="my-label">Size</label>
             </div>
-            <div class="input-field col s12">
+            <div class="input-field col s12 m6 offset-m3 l4 offset-l4">
                 <input id="colour" name="colour" type="text" class="validate">
                 <label for="colour" class="my-label">Colour</label>
             </div>
-            <div class="input-field col s12">
+            <div class="input-field col s12 m6 offset-m3 l4 offset-l4">
                 <input id="fork" name="suspension[fork]" type="text" class="validate">
                 <label for="fork" class="my-label">Fork</label>
             </div>
-            <div class="input-field col s12">
+            <div class="input-field col s12 m6 offset-m3 l4 offset-l4">
                 <input id="shock" name="suspension[shock]" type="text" class="validate">
                 <label for="shock" class="my-label">Shock</label>
             </div>
-            <div class="input-field col s12">
+            <div class="input-field col s12 m6 offset-m3 l4 offset-l4">
                 <input id="rims" name="wheels[rims]" type="text" class="validate">
                 <label for="rims" class="my-label">Rims</label>
             </div>
-            <div class="input-field col s12">
+            <div class="input-field col s12 m6 offset-m3 l4 offset-l4">
                 <input id="spokes" name="wheels[spokes]" type="text" class="validate">
                 <label for="spokes" class="my-label">Spokes</label>
             </div>
-            <div class="input-field col s12">
+            <div class="input-field col s12 m6 offset-m3 l4 offset-l4">
                 <input id="hubs" name="wheels[hubs]" type="text" class="validate">
                 <label for="hubs" class="my-label">Hubs</label>
             </div>
-            <div class="input-field col s12">
+            <div class="input-field col s12 m6 offset-m3 l4 offset-l4">
                 <input id="front_tyre" name="wheels[front_tyre]" type="text" class="validate">
                 <label for="front_tyre" class="my-label">Front Tyre</label>
             </div>
-            <div class="input-field col s12">
+            <div class="input-field col s12 m6 offset-m3 l4 offset-l4">
                 <input id="rear_tyre" name="wheels[rear_tyre]" type="text" class="validate">
                 <label for="rear_tyre" class="my-label">Rear Tyre</label>
             </div>
-            <div class="input-field col s12">
+            <div class="input-field col s12 m6 offset-m3 l4 offset-l4">
                 <input id="front_brake" name="brakes[front_brake]" type="text" class="validate">
                 <label for="front_brake" class="my-label">Front brake</label>
             </div>
-            <div class="input-field col s12">
+            <div class="input-field col s12 m6 offset-m3 l4 offset-l4">
                 <input id="rear_brake" name="brakes[rear_brake]" type="text" class="validate">
                 <label for="rear_brake" class="my-label">Rear brake</label>
             </div>
-            <div class="input-field col s12">
+            <div class="input-field col s12 m6 offset-m3 l4 offset-l4">
                 <input id="front_brake_rotor" name="brakes[front_brake_rotor]" type="text" class="validate">
                 <label for="front_brake_rotor" class="my-label">Front brake rotor</label>
             </div>
-            <div class="input-field col s12">
+            <div class="input-field col s12 m6 offset-m3 l4 offset-l4">
                 <input id="rear_brake_rotor" name="brakes[rear_brake_rotor]" type="text" class="validate">
                 <label for="rear_brake_rotor" class="my-label">Rear brake rotor</label>
             </div>
-            <div class="input-field col s12">
+            <div class="input-field col s12 m6 offset-m3 l4 offset-l4">
                 <input id="crankset" name="transmission[crankset]" type="text" class="validate">
                 <label for="crankset" class="my-label">Crankset</label>
             </div>
-            <div class="input-field col s12">
+            <div class="input-field col s12 m6 offset-m3 l4 offset-l4">
                 <input id="chain" name="transmission[chain]" type="text" class="validate">
                 <label for="chain" class="my-label">Chain</label>
             </div>
-            <div class="input-field col s12">
+            <div class="input-field col s12 m6 offset-m3 l4 offset-l4">
                 <input id="chainring" name="transmission[chainring]" type="text" class="validate">
                 <label for="chainring" class="my-label">Chainring</label>
             </div>
-            <div class="input-field col s12">
+            <div class="input-field col s12 m6 offset-m3 l4 offset-l4">
                 <input id="derailleur" name="transmission[derailleur]" type="text" class="validate">
                 <label for="derailleur" class="my-label">Derailleur</label>
             </div>
-            <div class="input-field col s12">
+            <div class="input-field col s12 m6 offset-m3 l4 offset-l4">
                 <input id="cassette" name="transmission[cassette]" type="text" class="validate">
                 <label for="cassette" class="my-label">Cassette</label>
             </div>
-            <div class="input-field col s12">
+            <div class="input-field col s12 m6 offset-m3 l4 offset-l4">
                 <input id="frame_number" name="frame_number" type="text" class="validate">
                 <label for="frame_number" class="my-label">Frame Number</label>
             </div>
         </div>
         <div class="row">
-            <button type="submit" class="col s6 offset-s3 btn-large button">
+            <button type="submit" class="col s12 m6 offset-m3 l4 offset-l4 btn-large button">
                 Add Bike
             </button>
         </div>
