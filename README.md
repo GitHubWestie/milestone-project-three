@@ -43,13 +43,13 @@ The app is active and can be used [here](https://the-bike-shed-3d6351787c10.hero
 
 Users will need to sign up and login to view their account and bike shed. User credential creation is controlled using form validation and passwords are hashed before being stored using Werkzeug.
 
-After being successfully signed up users will be directed to the 'My Bike Shed' page to add their first bike.
+After being successfully signed up or signing in users will be directed to the 'My Bike Shed' page to add their first bike.
 
 ### Navigation
 
 ![sidenav](/other-media/screenshots/sidenav.png)
 
-All pages are accessible using the buttons within the app and these lead users through the app in an intuitive manner. For additional convenience, a sidenav is accessible from the top left burger menu which enables users to jump to any section quikly and easily.
+All pages are accessible using the buttons within the app and these lead users through the app in an intuitive manner. For additional convenience, a sidenav is accessible from the top left burger menu which enables users to jump to any section quickly and easily.
 
 
 ### My Bike Shed
