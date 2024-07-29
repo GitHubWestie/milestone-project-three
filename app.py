@@ -71,10 +71,10 @@ def sign_in():
 
         if user_exists:
             if check_password_hash(
-                user_exists["password"], request.form.get("password")):
-                    session["user"] = request.form.get("username").lower()
-                    return redirect(
-                        url_for("my_bike_shed", username=session["user"]))
+                    user_exists["password"], request.form.get("password")):
+                session["user"] = request.form.get("username").lower()
+                return redirect(
+                    url_for("my_bike_shed", username=session["user"]))
             else:
                 flash("Username and/or password incorrect")
                 return redirect(url_for("sign_in"))
@@ -100,7 +100,8 @@ def my_profile(username):
 
 @app.route("/my_bike_shed")
 def my_bike_shed():
-    my_bike_shed = list(mongo.db.my_bike_shed.find({"user_id": session['user']}))
+    my_bike_shed = list(mongo.db.my_bike_shed.find(
+        {"user_id": session['user']}))
     return render_template("my-bike-shed.html", my_bike_shed=my_bike_shed)
 
 

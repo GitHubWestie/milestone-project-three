@@ -79,7 +79,7 @@ Stores data about the user such as username, name, email etc. As the rider weigh
 
 ### Future Feature Implementations
 * Upload image of bike
-* Upload invoice of most recent service evidence
+* Upload invoice of most recent service
 * Track service history
 * Rate my ride - Enable users to view other users bikes and rate them
 * Sell my bike/make me an offer - Users can sell or just make their bike available for offers if they're considering selling.
@@ -90,13 +90,13 @@ Stores data about the user such as username, name, email etc. As the rider weigh
 
 ## Structure
 
-The data structure will be in the form of a NRDBS as this seems the most suitable data structure for this project.
-The app structure will follow the flow of the creation process and intuitively guide the user through that process using prompts to gather information about users bikes.
-Should an error occur an error page will display that will provide a link back home
-The front-end will likely follow a tree structure but will experiment with nested lists, hub and spoke and dashboard.
-Would be useful if certain options were saved after being created for example bike manufacturer once created by a user could be available for all users from a list, gradually creating a user generated list.
+After careful consideration I opted for a non-relational database structure for this project. Realistically, relational or non-relational could have worked well, however I felt that given the potentially changeable nature of the data stored by users that a non-relational structure would suit the app better. 
 
-![flow chart]()
+![schema](/other-media/lucid-chart/the-bike-shed-schema.png)
+
+The database schema helped to inform the presentation and flow of the app. The app structure follows the flow of the creation process and intuitively guides the user through that process using prompts to gather information about users bikes.
+
+![flow chart](/other-media/lucid-chart/the-bike-shed-flow.png)
 
 ## Skeleton
 
@@ -105,11 +105,12 @@ Would be useful if certain options were saved after being created for example bi
 ## Surface
 ![figma-hi-fi](other-media/figma-files/My-Bike-Shed-hi-fi.png)
 
-![screenshots]()
-
-## Technologies
-
 ## Testing
+
+### User Stories
+
+### Functionality
+![test sheet]()
 
 ### Lighthouse Results
 
@@ -141,12 +142,129 @@ Would be useful if certain options were saved after being created for example bi
 
 ![css](other-media/validator-results/css/css-validation.png)
 
+## Technologies
+
 ### Languages Used
 * HTML
 * CSS
+* JavaScript
 * Python
 * Jinja
 
 ### Frameworks and Libraries
 * [Materialize](https://materializecss.com/about.html) by Google
 * [MongoDB](https://www.mongodb.com/) by MongoDB Inc.
+
+## Deployment & Local Development
+
+### Github
+
+This project can be cloned or forked in order to make a local copy on your own system.
+
+You will need to install any applicable packages found within the *requirements.txt* file and set environment variables in an *env.py* file saved to the root directory.
+
+* `pip3 install -r requirements.txt`.
+
+env.py
+
+    import os
+
+    os.environ.setdefault("IP", "0.0.0.0")
+    os.environ.setdefault("PORT", "5000")
+    os.environ.setdefault("SECRET_KEY", "YOUR_SECRET_KEY")
+    os.environ.setdefault("MONGO_URI", "YOUR_MONGO_URI")
+    os.environ.setdefault("MONGO_DBNAME", "the_bike_shed")
+
+#### How to Fork
+
+By forking the GitHub Repository, we make a copy of the original repository on our GitHub account to view and/or make changes without affecting the original owner's repository.
+You can fork this repository by using the following steps:
+
+1. Log in to GitHub and locate the [GitHub Repository](https://github.com/GitHubWestie/milestone-project-three)
+2. At the top of the Repository (not top of page) just above the "Settings" Button on the menu, locate the "Fork" Button.
+3. Once clicked, you should now have a copy of the original repository in your own GitHub account!
+
+#### How to Clone
+
+You can clone the repository by following these steps:
+
+1. Go to the [GitHub repository](https://github.com/GitHubWestie/milestone-project-three) 
+2. Locate the Code button above the list of files and click it 
+3. Select if you prefer to clone using HTTPS, SSH, or GitHub CLI and click the copy button to copy the URL to your clipboard
+4. Open Git shell or Terminal
+5. Change the current working directory to the one where you want the cloned directory
+6. In your IDE Terminal, type the following command to clone my repository:
+	* `git clone https://github.com/GitHubWestie/milestone-project-three.git`
+7. Press Enter to create your local clone.
+8. Install required packages according to the requirements.txt
+9. Create env.py file in root directory and assign environment variables 
+
+### MongoDB
+
+This project uses [MongoDB](https://www.mongodb.com) for the Non-Relational Database.
+
+To set up a MongoDB Database URI, sign-up on the MongoDB site, then follow these steps:
+
+- The name of the database on MongoDB should be "__the_bike_shed__".
+- The collection(s) needed for this database should be "__my_bike_shed__", "__categories__", and "__users__.
+- Click on the __the_bike_shed__ name created for the project.
+- Click on the __Connect__ button.
+- Click __Drivers__.
+- Copy the connection string and assign it as the MONGO_URI value in the env.py file, making sure to replace `<password>` with your database password (not your account password) and insert the database name after mongodb.net/
+
+    `mongodb+srv://<username>:<password>@cluster0.6wq2wyp.mongodb.net/<database_name>?retryWrites=true&w=majority&appName=Cluster0`
+
+### Heroku Deployment
+
+This project uses [Heroku](https://www.heroku.com)
+
+Deployment steps are as follows, after account setup:
+
+- Select __New__ in the top-right corner of your Heroku Dashboard, and select __Create new app__ from the dropdown menu.
+- Your app name must be unique, and then choose a region closest to you (EU or USA), and finally, select __Create App__.
+- From the new app __Settings__, click __Reveal Config Vars__, and set your environment variables.
+
+| Key | Value |
+| --- | --- |
+| `DATABASE_URL` | user's own value |
+| `IP` | 0.0.0.0 |
+| `MONGO_DBNAME` | user's own value |
+| `MONGO_URI` | user's own value |
+| `PORT` | 5000 |
+| `SECRET_KEY` | user's own value |
+
+Heroku needs two additional files in order to deploy properly.
+
+- requirements.txt
+- Procfile
+
+You can install this project's __requirements__ (where applicable) using:
+
+- `pip3 install -r requirements.txt`
+
+If you have your own packages that have been installed, then the requirements file needs to be updated using:
+
+- `pip3 freeze --local > requirements.txt`
+
+The **Procfile** can be created with the following command:
+
+- `echo web: python app.py > Procfile`
+- *replace __app.py__ with the name of your primary Flask app name; the one at the root-level*
+
+__NOTE:__ The Procfile uses a capital P and doesn't have a file extension on the end.
+
+For Heroku deployment, follow these steps to connect your own GitHub repository to the newly created app:
+
+Either:
+
+- Select __Automatic Deployment__ from the Heroku app.
+
+Or:
+
+- In the Terminal/CLI, connect to Heroku using this command: `heroku login -i`
+- Set the remote for Heroku: `heroku git:remote -a app_name` (replace *app_name* with your app name)
+- After performing the standard Git `add`, `commit`, and `push` to GitHub, you can now type:
+	- `git push heroku main`
+
+The project should now be connected and deployed to Heroku!
+
