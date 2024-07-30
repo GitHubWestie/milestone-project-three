@@ -83,6 +83,11 @@ nav a {
     margin: 1rem 0;
 }
 
+.bike-item:hover {
+    background-color: #96d0e446;
+    transition: 0.25s ease-in-out;
+}
+
 .page-content-container {
     height: 90vh;
 }

@@ -26,7 +26,6 @@ The app is active and can be used [here](https://the-bike-shed-3d6351787c10.hero
 * To easily add and remove bikes
 * To easily add and remove and update components on those bikes
 * To record settings for each of my bikes such as tyre pressures and suspension settings
-* To input/upload service history
 
 ### As a returning user I want:
 
@@ -60,16 +59,23 @@ This is where users bikes are stored and accessed once created. From here users 
 
 Bikes are easily identifiable at a glance by the manufacturer and model name. This is accompanied by a small icon to the left depicting the bike category.
 
-    Settings for bikes can be accessed through each bike from here. User can record settings such as tyre pressures, suspension settings etc. 
-    Record serial numbers for components where applicable and link to product pages.
-    Leave themselves notes for when they return to tuning setup or a specific location.
-    Last serviced/service due date
-
 ### Add bike
 
 ![add-bike-top](/other-media/screenshots/addbike-0.png) ![add-bike-bottom](other-media/screenshots/addbike-1.png)
 
 An add bike function which will allow users to create a new bike and add it to their bike shed. Users will be presented with a form to complete which will capture various components. For the sake of convenience, at the point of creation users will only be required to complete the manufacturer and model fields and will be able to return to the bike at any time to complete the remaining fields. As the app can store potentially sensitive data such as frame serial number it will be hidden to all but the creator. 
+
+### Edit Bike
+
+![edit-button](/other-media/screenshots/edit-button.png) ![edit-bike-page](/other-media/screenshots/edit-bike-page.png)
+
+The edit bike button allows users to update or remove specific data. Any data that has been entered previously will be automatically filled in using the data held in the database. Users confirm changes using the button at the end of the edit form.
+
+### Delete Bike
+
+![delete-bike](/other-media/screenshots/delete-modal.png)
+
+Users can delete a bike from the database completely using the delete bike button accessed through the edit bike page. This is defensively programmed to avoid any accidental deletions and will trigger a confirmation modal when clicked. 
 
 ### My Profile
 
@@ -109,8 +115,28 @@ The database schema helped to inform the presentation and flow of the app. The a
 
 ### User Stories
 
+__As a first time user:__
+
+| Expectation | Implementation |
+| --- | --- |
+| Have a convenient app to store data about my bikes | The app provides a user friendly way to interact with a database structure and store bike related information |
+| Have a secure app to store sensitive data about my bikes | The app regularly checks for user login data and will not allow sensitive page data to be viewed if not logged in.|
+| Have sensitive information only visible to me | The app checks user data against stored data so bikes are only visible to the user that created them. |
+| Intuitively understand how to use and navigate the app | The app guides users through the creation process by the order in which pages are linked together, validation and providing a choice of how to navigate the app through links or a sidenav menu |
+|  Easily add and remove bikes | Bikes are simple to create. Although many fields are allowed only a make and model are required for initial creation. Users can return and add more detail at any time. Deletion is also easily accessed from each bike page. This is defensively programmed with a confirmation modal to prevent accidental deletion |
+| Easily add, remove and update components on bikes | Each bike page allows a user to edit the bike where components can be added, edited or removed by filling in or deleting from input fields |
+|  Record settings for each of my bikes such as tyre pressures and suspension settings | Currently this is acheivable using the input fields in the add bike form however in future I would like this to be a standalone element of the app to provide a better UX |
+
+__As a returning user:__
+
+| Expectation | Implementation |
+| --- | --- |
+| Easily retrieve information about my bikes | Upon logging in users are taken directly to their bike shed which lists all bikes belonging to that user. Each bike links to its own page giving all information held about that bike. Any input fields that have not been completed yet are hidden so as to not clutter the view and make it easy for users to see relevant information  |
+| Easily retrieve settings for each bike | Currently this information would also be displayed on each bikes page if previously entered by the user.  |
+| Easily edit and otherwise manipulate information stored about my bikes | Each bike page allows user full access and control over that data. User can read, update and delete specific or all data through these pages. |
+
 ### Functionality
-![test sheet]()
+![test sheet](/other-media/test-sheet.png)
 
 ### Lighthouse Results
 
@@ -154,6 +180,30 @@ The database schema helped to inform the presentation and flow of the app. The a
 ### Frameworks and Libraries
 * [Materialize](https://materializecss.com/about.html) by Google
 * [MongoDB](https://www.mongodb.com/) by MongoDB Inc.
+* [Flask](https://pypi.org/project/Flask/) - Micro framework for site templating.
+* [Materialize v1.0.0](https://materializecss.com) - The framework for the website.
+
+### Libraries
+
+* [Font Awesome](https://fontawesome.com/) - For icons on the website.
+* [Jinja](https://jinja.palletsprojects.com/en/3.1.x/) - Templating engine.
+
+### Programs
+
+* [Bing Create](https://www.bing.com/images/create) - For logo generation.
+* [Gimp](https://www.gimp.org/) - To create the favicon
+* [Figma](https://figma.com/) - For lo-fi wireframes and hi-fi mockups
+* [Git](https://git-scm.com/) - For version control.
+* [Google Dev Tools](https://developers.google.com/web/tools/chrome-devtools) - To troubleshoot and test features, solve issues with responsiveness and styling.
+* [Heroku](https://www.heroku.com) - For website deployment.
+* [MongoDB](https://www.mongodb.com) - The database used for storing information for the site.
+* [Pip](https://pypi.org/project/pip/) - To install Python packages.
+
+### Testing and Validation Tools
+
+* [UI.dev](https://ui.dev/amiresponsive) - To show the site on a range of screen sizes.
+* [W3C Markup Validation Service](https://validator.w3.org/) - To validate HTML and CSS code.
+* [CI PEP-8 Tool](https://pep8ci.herokuapp.com/) - To validate Python code and PEP-8 compliance.
 
 ## Deployment & Local Development
 
@@ -262,4 +312,16 @@ The **Procfile** can be created with the following command:
 
 __NOTE:__ The Procfile uses a capital P and doesn't have a file extension on the end.
 
+## Credits
 
+### Knowledge picked from the brains of:
+
+* Google
+* Stack Overflow
+* W3Schools
+* YouTube
+* Code Institute
+
+### Special thanks:
+
+Code Institute Tutor support and my mentor Ronan for saving whats left of my will and Amy my cohort facilitator for checking in when I was lost in the wilderness.
