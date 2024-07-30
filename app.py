@@ -19,11 +19,12 @@ mongo = PyMongo(app)
 
 
 @app.before_request
+# Check user is logged in to prevent access to secure pages
 def check_logged_in():
     # List of routes that don't require login
     whitelist = ['landing', 'sign_up', 'sign_in']
 
-    # Exclude static file requests
+    # Exclude static file requests so pages display correctly
     if request.path.startswith('/static/'):
         return
 
@@ -113,6 +114,23 @@ def my_bike(bike_id):
 
 @app.route("/add_bike", methods=["GET", "POST"])
 def add_bike():
+    preset_categories = [
+    {"bike_category":"mountain"},
+    {"bike_category": "road"},
+    {"bike_category": "gravel"},
+    {"bike_category": "e-mtb"},
+    {"bike_category": "hybrid"},
+    {"bike_category": "dirt jump/slopestyle"},
+    {"bike_category": "cyclocross"},
+    {"bike_category": "touring"},
+    {"bike_category": "triathlon"},
+    ]
+
+    collection = mongo.db.categories
+    # checks if categories collection has any documents
+    if collection.count_documents({}) == 0:
+        # if no documents are found inserts preset categories
+        collection.insert_many(preset_categories)
     categories = mongo.db.categories.find()
 
     if request.method == "POST":

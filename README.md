@@ -161,9 +161,9 @@ The database schema helped to inform the presentation and flow of the app. The a
 
 This project can be cloned or forked in order to make a local copy on your own system.
 
-You will need to install any applicable packages found within the *requirements.txt* file and set environment variables in an *env.py* file saved to the root directory.
+You will need to install packages found within the *requirements.txt* file and set environment variables in an *env.py* file saved to the root directory.
 
-* `pip3 install -r requirements.txt`.
+* `pip install -r requirements.txt`.
 
 env.py
 
@@ -188,16 +188,21 @@ You can fork this repository by using the following steps:
 
 You can clone the repository by following these steps:
 
-1. Go to the [GitHub repository](https://github.com/GitHubWestie/milestone-project-three) 
+1. Go to the [The Bike Shed GitHub repository](https://github.com/GitHubWestie/milestone-project-three) 
 2. Locate the Code button above the list of files and click it 
-3. Select if you prefer to clone using HTTPS, SSH, or GitHub CLI and click the copy button to copy the URL to your clipboard
+3. Select if you prefer to clone using HTTPS, SSH, or GitHub CLI and click the copy button to copy the URL
 4. Open Git shell or Terminal
 5. Change the current working directory to the one where you want the cloned directory
 6. In your IDE Terminal, type the following command to clone my repository:
 	* `git clone https://github.com/GitHubWestie/milestone-project-three.git`
 7. Press Enter to create your local clone.
-8. Install required packages according to the requirements.txt
-9. Create env.py file in root directory and assign environment variables 
+8. Install required packages according to the requirements.txt In your IDE terminal type:
+    * `pip install -r requirements.txt`
+9. Create env.py file in root directory and assign environment variables
+10. Create a new empty repo on GitHub - do not initialise with a README
+11. In your IDE terminal type the following commands to setup your repository:
+    * `git remote add origin https://github.com/your-username/new-repo.git`
+    * `git push -u origin main`
 
 ### MongoDB
 
@@ -205,46 +210,50 @@ This project uses [MongoDB](https://www.mongodb.com) for the Non-Relational Data
 
 To set up a MongoDB Database URI, sign-up on the MongoDB site, then follow these steps:
 
-- The name of the database on MongoDB should be "__the_bike_shed__".
-- The collection(s) needed for this database should be "__my_bike_shed__", "__categories__", and "__users__.
-- Click on the __the_bike_shed__ name created for the project.
-- Click on the __Connect__ button.
-- Click __Drivers__.
-- Copy the connection string and assign it as the MONGO_URI value in the env.py file, making sure to replace `<password>` with your database password (not your account password) and insert the database name after mongodb.net/
+* The name of the database on MongoDB should be "__the_bike_shed__".
+* The collection(s) needed for this database should be "__my_bike_shed__", "__categories__", and "__users__.
+* Click on the __the_bike_shed__ name created for the project.
+* Click on the __Connect__ button.
+* Click __Drivers__.
+* Copy the connection string and assign it as the MONGO_URI value in the env.py file, making sure to replace `<password>` with your database password (not your account password) and insert the database name after mongodb.net/
 
     `mongodb+srv://<username>:<password>@cluster0.6wq2wyp.mongodb.net/<database_name>?retryWrites=true&w=majority&appName=Cluster0`
+* Finally, navigate to __network access__ in the left pane and change the IP address in the IP access list 0.0.0.0
 
 ### Heroku Deployment
 
 This project uses [Heroku](https://www.heroku.com)
 
-Deployment steps are as follows, after account setup:
+Deployment steps are as follows:
 
-- Select __New__ in the top-right corner of your Heroku Dashboard, and select __Create new app__ from the dropdown menu.
-- Your app name must be unique, and then choose a region closest to you (EU or USA), and finally, select __Create App__.
-- From the new app __Settings__, click __Reveal Config Vars__, and set your environment variables.
+This process connects your GitHub repository to Heroku. Alternatively you can follow the instructions on Heroku to deploy using the Heroku CLI
+
+1. Select __New__ in the top-right corner of your Heroku Dashboard, and select __Create new app__ from the dropdown menu.
+2. Your app name must be unique, and then choose a region closest to you (EU or USA), and finally, select __Create App__.
+3. From the new app __Settings__, click __Reveal Config Vars__, and set your environment variables.
 
 | Key | Value |
 | --- | --- |
-| `DATABASE_URL` | user's own value |
 | `IP` | 0.0.0.0 |
-| `MONGO_DBNAME` | user's own value |
+| `MONGO_DBNAME` | the_bike_shed |
 | `MONGO_URI` | user's own value |
 | `PORT` | 5000 |
 | `SECRET_KEY` | user's own value |
 
-Heroku needs two additional files in order to deploy properly.
+4. Back in the deploy tab in Heroku choose connect to github and connect your github account. 
+5. Type or paste the repository name into the search box and select your repository
+6. Select __Automatic Deployment__ from the Heroku app.
+7. Select the __main__ branch to deploy from and click __deploy__
 
-- requirements.txt
-- Procfile
+Heroku will now build the app. When finished click view or open app from Heroku to visit the deployed version.
 
-You can install this project's __requirements__ (where applicable) using:
+### __IMPORTANT__
 
-- `pip3 install -r requirements.txt`
+A Procfile must be present for Heroku to deploy correctly and all requirements packages must be installed. These are included in the github repo.
 
-If you have your own packages that have been installed, then the requirements file needs to be updated using:
+You can install this project's requirements using:
 
-- `pip3 freeze --local > requirements.txt`
+- `pip install -r requirements.txt`
 
 The **Procfile** can be created with the following command:
 
@@ -253,18 +262,4 @@ The **Procfile** can be created with the following command:
 
 __NOTE:__ The Procfile uses a capital P and doesn't have a file extension on the end.
 
-For Heroku deployment, follow these steps to connect your own GitHub repository to the newly created app:
-
-Either:
-
-- Select __Automatic Deployment__ from the Heroku app.
-
-Or:
-
-- In the Terminal/CLI, connect to Heroku using this command: `heroku login -i`
-- Set the remote for Heroku: `heroku git:remote -a app_name` (replace *app_name* with your app name)
-- After performing the standard Git `add`, `commit`, and `push` to GitHub, you can now type:
-	- `git push heroku main`
-
-The project should now be connected and deployed to Heroku!
 
